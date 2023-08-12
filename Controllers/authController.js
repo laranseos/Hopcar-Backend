@@ -15,6 +15,7 @@ export const register = async (req, res) => {
          birthday:req.body.credentials.birthday,
          gender:req.body.credentials.gender,
          password: hash,
+         phonenumber:req.body.credentials.phonenumber
          //photo: req.body.photo,
       })
       console.log(newUser)

@@ -39,7 +39,7 @@ app.use(express.urlencoded())
 app.use(cors(corsOptions))
 app.use(cookieParser())
 app.use(express.static('assets'));
-app.use(express.static(process.cwd()+"\\build"));
+// app.use(express.static(process.cwd()+"\\build"));
 app.use("/api/v1/auth", authRoute)
 app.use("/api/v1/rides", rideRoute)
 app.use("/api/v1/users", userRoute)
@@ -47,9 +47,9 @@ app.use("/api/v1/search",rideRoute)
 app.use("/api/v1/profile",profileRoute)
 //app.use("/api/v1/review", reviewRoute)
 //app.use("/api/v1/booking", bookingRoute)
-app.get('/*', function (req, res) {
-   res.sendFile(process.cwd()+"\\"+'build'+"\\"+'index.html');
- });
+// app.get('/*', function (req, res) {
+//    res.sendFile(process.cwd()+"\\"+'build'+"\\"+'index.html');
+//  });
 app.listen(port, async () => {
    await connect();
    console.log('server listening on port', port)

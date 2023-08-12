@@ -54,8 +54,10 @@ export const getRide = async(req,res) =>{
     console.log(to)
     console.log(date)
     console.log(passengers)
+    const pickup=from.split(",")
+    const dropoff=to.split(",")
     try{
-        const rides=await Ride.find({from:from,to:to,date:date,passengers:passengers})
+        const rides=await Ride.find({from:{$regex:new RegExp(pickup[pickup.length-1])},from:{$regex:new RegExp(pickup[pickup.length-2])},to:{$regex:new RegExp(dropoff[dropoff.length-1])},to:{$regex:new RegExp(dropoff[dropoff.length-2])},date:date,passengers:{$gte:passengers}})
         console.log(rides)
         if(!rides[0]){
             res.status(200).json({success:false,message:"There is no results matched"})

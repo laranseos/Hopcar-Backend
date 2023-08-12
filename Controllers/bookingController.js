@@ -47,10 +47,11 @@ export const createBooking =async(req,res)=>{
       if(!bookedEmail.includes(email)){
          console.log(false)
          const bookedPassengers=ride.bookedPassengers+1
+         const passengers=ride.passengers-1
          console.log(bookedPassengers)
          bookedEmail=[...bookedEmail ,email]
          console.log(bookedEmail)
-         const newRide=await Ride.findByIdAndUpdate(rideId,{bookedPassengers:bookedPassengers,bookedEmail:bookedEmail},{new:true})
+         const newRide=await Ride.findByIdAndUpdate(rideId,{bookedPassengers:bookedPassengers,bookedEmail:bookedEmail,passengers:passengers},{new:true})
          console.log(newRide)
          res.status(200).json({success:true,message:"Successfully created"})
       }
